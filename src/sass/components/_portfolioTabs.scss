@@ -231,6 +231,10 @@ $box-maxWidth: 125rem;
         display: flex;
         align-items: center;
 
+        @include phone {
+          flex-direction: column;
+        }
+
         h1 {
           color: var(--color-main1-dark);
           font-size: 4.5rem;

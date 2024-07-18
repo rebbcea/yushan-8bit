@@ -756,6 +756,11 @@ p {
   display: flex;
   align-items: center;
 }
+@media (max-width: 48.75em) {
+  .portfolio__box-details--title {
+    flex-direction: column;
+  }
+}
 .portfolio__box-details--title h1 {
   color: var(--color-main1-dark);
   font-size: 4.5rem;
