@@ -46,6 +46,7 @@ window.addEventListener('load', event => {
         curDepiction = gallery[curIndex].querySelector('img').dataset.depiction;
         curSoftware = gallery[curIndex].querySelector('img').dataset.software;
         curHref = gallery[curIndex].querySelector('img').dataset.href;
+        curSmall = gallery[curIndex].querySelector('img').dataset.detail;
         console.log(curHref);
 
         prevTitle.querySelector('h1').textContent = curTitle;
@@ -54,18 +55,26 @@ window.addEventListener('load', event => {
 
         // 獲取內文要放入href的div
         let newHerf = document.getElementById('newHref');
+        let newsmall = document.getElementById('newsmall');
         console.log(newHerf);
 
         // 設定連結部分 連結是undefined不顯示 否則補連結+顯示按鈕
         if (curHref === undefined) {
           newHref.style.display = 'none';
+          newsmall.style.display = 'none';
         } else {
           newHref.style.display = 'flex';
+          newsmall.style.display = 'flex';
 
           // 將a連結插入到裡面
+
           newHerf.innerHTML =
             "<a href = ' " + curHref + " ' target='_blank'>查看網站</a>";
 
+          newsmall.innerHTML =
+            ' <small>負責內容&nbsp;/&nbsp;<mark> ' +
+            curSmall +
+            '</mark></small>';
           // prevSmall.innerHTML = "<a href = ' " + curHref + "'>";
           // prevSmall.querySelector('a').style.display = 'flex';
         }
