@@ -1,0 +1,91 @@
+// 調整大小/進度條粗度
+$circle-size: 10rem;
+$circle-width: 7rem;
+
+// 改變背景顏色/進度條顏色/數值顏色
+$circle-bg: var(--color-white);
+$circle-color: var(--color-main1);
+$circle-textColor: var(--color-gray-dark2);
+
+// 跑動畫時間
+$circle-time: 1s;
+
+// 背景+文字部分 ===============================
+.circular {
+  @include wh($circle-size, $circle-size);
+  background: $circle-bg;
+  position: relative;
+
+  // 中心內圈(背景部分)
+  &__inner {
+    // 可選擇是否隱藏中間區塊
+    // display: none;
+    z-index: 6;
+    @extend %ab-center;
+    // 可改變進度條粗細
+    @include wh($circle-width, $circle-width);
+    background: $circle-bg;
+    border-radius: 100%;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &__value {
+    z-index: 10;
+    @extend %ab-center;
+    color: $circle-textColor;
+    font-size: 1.5rem;
+  }
+}
+
+// 進度條 ==================================
+.circle {
+  // 進度條軌跡(灰)
+  &__percent {
+    position: absolute;
+    @include wh(100%, 100%);
+    background: var(--color-gray-light);
+    border-radius: 100%;
+    // 只有在絕對定位的時候才會生效,且一定要設定背景顏色!!!!!!
+    // 讓灰底只剩下右半邊
+    clip: rect(0, $circle-size, $circle-size, calc($circle-size / 2));
+  }
+
+  //設定progress 只剩左半邊(製作左到右的展圖)
+  &__progress {
+    position: absolute;
+    @include wh(100%, 100%);
+    background: $circle-color;
+    border-radius: 100%;
+    // 只有在絕對定位的時候才會生效!!!
+    clip: rect(0, calc($circle-size / 2), $circle-size, 0rem);
+  }
+
+  //設定在"precent-left"下的progress 旋轉 (會直接繼承左半邊的圖形繼續延展顏色)
+  //若直接在progress下寫,則是只有半邊旋轉
+  &__percent {
+    &--left {
+      .circle__progress {
+        z-index: 1;
+        animation: circle $circle-time linear both;
+      }
+    }
+
+    // 旋轉180 在右半邊(製作右到左的展圖)
+    &--right {
+      transform: rotate(180deg);
+
+      .circle__progress {
+        z-index: 3;
+        animation: circle $circle-time linear both;
+        // 等左半邊到右半邊跑完,才開始跑繼續動畫
+        animation-delay: $circle-time;
+      }
+    }
+  }
+}
+
+@keyframes circle {
+  100% {
+    transform: rotate(180deg);
+  }
+}

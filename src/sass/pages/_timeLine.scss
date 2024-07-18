@@ -1,0 +1,170 @@
+/* 時間軸語法 ========================================*/
+
+// 設定線的寬度
+$timeline-width: 1rem;
+
+.timeLine {
+  //   display: flex;
+  //   flex-direction: column;
+  //   margin: auto;
+
+  position: relative;
+  display: flex;
+  flex-grow: 5;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0rem auto 3rem auto;
+
+  // 中央圓
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    @include wh(8rem, 8rem);
+    background-color: var(--color-white);
+    border: 1rem solid var(--color-main1);
+    border-radius: 50%;
+    box-shadow: var(--shadow-box-dark);
+  }
+
+  // 中央線
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    // top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $timeline-width;
+    height: calc(100% + 5rem);
+    background-color: var(--color-main1);
+    border-radius: 2rem;
+    box-shadow: var(--shadow-box-dark);
+  }
+
+  &__item {
+    border-radius: 50px;
+    width: 50%;
+    position: relative;
+    margin: 2rem 0rem;
+
+    // 每一個item的小圓圈
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      @include wh(3rem, 3rem);
+      border-radius: 50%;
+      background-color: var(--color-white);
+      border: 5px solid var(--color-main1);
+    }
+  }
+
+  //文字部分
+  &__content {
+    background-color: var(--color-white);
+    border: 1rem double var(--color-main1);
+    box-shadow: var(--shadow-box-dark);
+    color: var(--main-main-color);
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    h2 {
+      color: var(--color-main1-dark);
+      margin-bottom: 0.5rem;
+      // 連接框的線
+      &::after {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: $timeline-width;
+        width: 12rem;
+        margin: auto;
+        background-color: var(--color-main1);
+        box-shadow: var(--shadow-box-dark);
+      }
+    }
+
+    p {
+      color: var(--color-main1-dark2);
+      line-height: 2.5rem;
+
+      small {
+        color: var(--color-white);
+        background-color: var(--color-gray-light2);
+        padding: 0.2rem 0.8rem;
+        border-radius: 1.5rem;
+        box-decoration-break: clone;
+      }
+    }
+  }
+
+  .timeLine__item:nth-child(odd) h2::after {
+    right: 0;
+  }
+  .timeLine__item:nth-child(even) h2::after {
+    left: 0;
+  }
+  .timeLine__item:nth-child(odd) {
+    padding: 0.5rem 9rem 0.5rem 0.5rem;
+    &::before {
+      right: -1.5rem;
+    }
+  }
+  .timeLine__item:nth-child(even) {
+    padding: 0.5rem 0.5rem 0.5rem 9rem;
+    transform: translateY(12rem);
+    &::before {
+      left: -1.5rem;
+    }
+  }
+}
+
+// RWD
+
+// 為了讓rwd時圓圈消失,跟上面圖片米奇黏在一起
+#timeLine {
+  @include pad {
+    margin-top: 0;
+  }
+}
+
+@include pad {
+  .section .timeLine {
+    align-items: center;
+    min-height: auto;
+    h1 {
+      font-size: 4rem;
+      &::after {
+        display: none;
+      }
+    }
+
+    // 讓中央圓消失
+    &::before {
+      display: none;
+    }
+
+    // 調整rwd下所有item變成一塊
+    .timeLine__item {
+      flex-basis: 100%;
+      padding: 0.5rem 0;
+      transform: translateY(0);
+
+      // 讓圓點全部靠左
+      &::before {
+        display: none;
+
+        // 讓點點靠左上角
+        top: 0;
+        bottom: auto;
+        right: auto;
+        left: -10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+:root {
+  // color
+  --color-main1: #ff5f5f;
+  --color-main1-light: #ffd2d2;
+  --color-main1-dark: #c34446;
+  --color-main1-dark2: #7f4849;
+  --color-main2: #86d3ff;
+  --color-main2-dark: #62bbee;
+  --color-light: #f4fbff;
+
+  --color-white: #fff;
+  --color-black: #000;
+
+  --color-gray-light: #e2e2e2;
+  --color-gray-light2: #969696;
+  --color-gray-dark: #777;
+  --color-gray-dark2: rgb(53, 53, 53);
+
+  // shadow
+  --shadow-box-dark: 0.5rem 0.5rem 0px #d50000;
+
+  // border
+  --border-solid: 0.5rem var(--color-main1) solid;
+  --border-solid2: 0.5rem var(--color-main2) solid;
+  --border-width: 0.5rem;
+
+  // width height
+  --max-width: 1300px; //index最大寬度
+  --header-height: 6rem; //選單的高度
+  --viewTop-height: 8rem; //index上面的top
+}
+
+// media
+$bp-large: 78.15em; // 1250px
+$bp-medium: 61.25em; // 980px
+$bp-small: 48.75em; // 780px
+$bp-smallest: 34.37em; // 550px
+
+// gird
+$grid-width: 140rem;
+$gutter-horizontal: 6rem; //水平
+$gutter-vertical: 8rem; //垂直

@@ -1,0 +1,33 @@
+// 變數設定
+@import 'helpers/mixin';
+@import 'helpers/inderitance';
+@import 'helpers/variables';
+
+// 基本設定
+@import 'base/base';
+@import 'base/animation';
+// 文字樣式
+@import 'base/typography';
+
+// 元件(按鈕、card、slider等等)
+@import 'components/buttons';
+@import 'components/boxTalk';
+@import 'components/skillTab';
+@import 'components/portfolioTabs';
+
+// 共通區塊(頁首頁尾/排版等等)
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/grid';
+
+// 單頁設定
+@import 'pages/index';
+@import 'pages/about';
+@import 'pages/timeLine';
+@import 'pages/uitls';
+
+// 共用
+@import 'base/common';
+
+// font
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Noto+Sans+TC:wght@400;700;900&family=Righteous&display=swap');

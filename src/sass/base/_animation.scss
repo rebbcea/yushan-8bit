@@ -1,0 +1,58 @@
+// 顏色改變 =========================================
+@keyframes color-change {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// 漂浮 =============================================
+@keyframes float {
+  0% {
+    transform: translateY(-2rem);
+  }
+
+  50% {
+    transform: translateY(0rem);
+  }
+
+  100% {
+    transform: translateY(-2rem);
+  }
+}
+
+// 標題漂浮設定
+// @keyframes float-title {
+//   0% {
+//     transform: translateY(calc(-50%));
+//   }
+
+//   50% {
+//     transform: translateY(-60%);
+//   }
+
+//   100% {
+//     transform: translateY(calc(-50%));
+//   }
+// }
+
+// @keyframes float-subTitle {
+//   0% {
+//     transform: translateY(160%);
+//   }
+
+//   50% {
+//     transform: translateY(180%);
+//   }
+
+//   100% {
+//     transform: translateY(160%);
+//   }
+// }

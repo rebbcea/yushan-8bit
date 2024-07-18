@@ -1,0 +1,83 @@
+// WRAP 全頁面設定 ==========================================================
+
+.wrap {
+  max-width: var(--max-width);
+  width: 80%;
+  position: relative;
+  top: var(--viewTop-height);
+  margin: 0 auto;
+  transition: all 0.3s;
+
+  &.active {
+    border: var(--border-solid);
+    max-width: 100%;
+    width: 100%;
+    top: 0;
+  }
+
+  @include desktop {
+    width: 90%;
+  }
+}
+
+.section {
+  position: relative;
+}
+
+.section.active {
+  &:not(:nth-child(2)) {
+    max-width: var(--max-width);
+    margin: 10rem auto 0;
+    padding: 0rem 5rem;
+    @include s-phone {
+      padding: 0rem 2rem;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 10rem;
+  }
+}
+
+// index主介面 ===========================================================
+.index {
+  // index要滿版的視覺效果,所以要100vh
+  height: 100vh;
+
+  // 設定主介面框
+  &__wrap {
+    // 設定index的主介面框的高度
+    height: 70vh;
+    border: var(--border-solid);
+    background: url('../src/img/bg__index.jpg') no-repeat left bottom / cover;
+    transition: all 0.3s;
+    position: relative;
+    @include flex-center;
+    flex-direction: column;
+
+    &.active {
+      // index_wrap在滾動時畫面變高並取消左右邊框(會重疊)
+      height: 100vh;
+      border-left: none;
+      border-right: none;
+    }
+  }
+
+  .icon__arrow {
+    opacity: 1;
+    transition: all 0.3s;
+
+    &.hidden {
+      opacity: 0;
+    }
+
+    i {
+      margin-top: 3rem;
+      width: 100%;
+      text-align: center;
+      color: var(--color-main1);
+
+      @include animation(float, 1.5s);
+    }
+  }
+}

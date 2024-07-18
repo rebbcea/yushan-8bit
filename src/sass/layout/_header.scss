@@ -1,0 +1,110 @@
+// header
+.header {
+  background-color: var(--color-main1-light);
+  display: flex;
+  height: var(--header-height);
+  width: 100%;
+  transition: all 0.3s;
+  @include border(
+    var(--border-solid),
+    var(--border-solid),
+    none,
+    var(--border-solid)
+  );
+
+  &__close {
+    @include flex(flex-end, center, nowrap);
+    background-color: var(--color-main1);
+    padding: 2rem;
+    margin-left: 2rem;
+    transition: all 0.2s ease-in-out;
+
+    i {
+      color: var(--color-white);
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-main1-dark);
+      i {
+        // color: var(--color-gray-light);
+      }
+    }
+
+    @include phone {
+      padding: 1rem;
+    }
+  }
+
+  &.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    @include border(var(--border-solid), none, var(--border-solid), none);
+    height: calc(var(--header-height) + 1rem);
+  }
+}
+
+.header .nav {
+  flex: 1;
+  margin-left: 1rem;
+  font-size: 1.8rem;
+
+  &__list {
+    height: 100%;
+    list-style: none;
+    @include flex(flex-start, flex-end, nowrap);
+    gap: 1rem;
+  }
+
+  &__item {
+    width: 100%;
+    max-width: 30rem;
+    transition: all 0.3s ease-in-out;
+
+    a {
+      display: inline-block;
+      width: inherit;
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--color-main1);
+      letter-spacing: 0.5rem;
+      background-color: var(--color-light);
+      border-radius: 1rem 2rem 0rem 0rem;
+      padding: 0.6rem 2rem;
+
+      transition: all ease-in-out 0.2s;
+      @include border(
+        var(--border-solid),
+        var(--border-solid),
+        none,
+        var(--border-solid)
+      );
+
+      @include phone {
+        padding: 0.6rem 1rem;
+      }
+
+      &:hover,
+      &:active {
+        color: var(--color-white);
+        background-color: var(--color-main1);
+      }
+
+      span {
+        @include pad {
+          display: none;
+        }
+      }
+    }
+
+    &--active {
+      max-width: 33rem;
+      a {
+        color: var(--color-white);
+        background-color: var(--color-main1);
+      }
+    }
+  }
+}

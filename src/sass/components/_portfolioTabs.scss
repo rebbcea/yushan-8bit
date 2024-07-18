@@ -1,0 +1,363 @@
+// previrw-tab + content =============================
+.portfolio {
+  display: flex;
+  flex-direction: column;
+
+  &__tab-container {
+    @include flex(flex-start, flex-end, nowrap);
+    // flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  &__tab {
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+    position: relative;
+    z-index: 0;
+    white-space: nowrap;
+    border: var(--border-solid2);
+    background-color: var(--color-white);
+    color: var(--color-white);
+    font-weight: 900;
+    font-size: 2.5rem;
+    letter-spacing: 1rem;
+    padding: 2rem 1.5rem 1rem 1rem;
+    border-radius: 2rem 2rem 0 0rem;
+    transform: translate(2rem, 1rem);
+    transition: all 0.2s ease-in-out;
+    @include phone {
+      color: var(--color-main2);
+      span {
+        display: none;
+      }
+    }
+
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      z-index: -2;
+      -webkit-text-stroke: 0.5rem var(--color-main2);
+      @include phone {
+        display: none;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.portfolio__tab--active {
+      background-color: var(--color-main2);
+      transform: translate(2rem, 0rem);
+
+      @include phone {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: scroll;
+    display: none;
+
+    padding: 3rem 3rem 3rem 5rem;
+    @extend %border-content;
+
+    &.portfolio__content--active {
+      display: flex;
+    }
+  }
+
+  &__items {
+    flex: 1;
+    height: 60rem;
+    @include flex(flex-start, flex-start, wrap);
+    gap: 3rem;
+  }
+
+  &__item {
+    @include flex(center, center, nowrap);
+    flex-direction: column;
+    // 三欄
+    width: calc(33.333% - 3rem);
+
+    // 兩欄
+    @include desktop {
+      width: calc(50% - 3rem);
+    }
+    @include phone {
+      width: 100%;
+    }
+
+    &--img {
+      position: relative;
+      border: 0.6rem solid var(--color-main1);
+      border-radius: 3rem;
+      overflow: hidden;
+      width: 100%;
+
+      &::after {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include wh(100%, 100%);
+        background-color: rgb(181 226 255 / 30%);
+        transition: all 0.2s ease-in-out;
+      }
+
+      img {
+        // width: clamp(10rem, 30rem, 35rem);
+        height: clamp(5rem, 20rem, 20rem);
+        width: 100%;
+        object-fit: cover;
+        display: block;
+        transform: scale(1.2);
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover {
+        cursor: pointer;
+        &::after {
+          background-color: transparent;
+        }
+        & img {
+          transform: scale(1);
+        }
+      }
+    }
+
+    &--text {
+      @include flex(center, center);
+      color: var(--color-main1-dark);
+
+      h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.2rem;
+        text-align: center;
+
+        @include phone {
+          font-size: 2rem;
+        }
+      }
+
+      span {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+// previrw-box =====================================
+$box-maxWidth: 125rem;
+
+%rwd-width {
+  @include desktop {
+    max-width: calc($box-maxWidth - 35rem) !important;
+  }
+
+  @include pad {
+    max-width: calc($box-maxWidth - 55rem) !important;
+  }
+
+  @include phone {
+    max-width: calc($box-maxWidth - 72rem) !important;
+  }
+
+  @include s_phone {
+    max-width: calc($box-maxWidth - 90rem) !important;
+  }
+}
+
+.portfolio {
+  // 黑色背景
+  &-box {
+    display: none;
+    background-color: rgba($color: #978c8c, $alpha: 0.8);
+    @include wh(100%, 100%);
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  // box顏色底框
+  &-boxContainer {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: $box-maxWidth;
+    background-color: var(--color-light);
+    border: 1rem solid var(--color-main2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3rem;
+    padding: 5rem 2rem;
+
+    @include flex($a: center);
+    flex-direction: column;
+
+    @include desktop {
+      width: 90%;
+    }
+
+    @include phone {
+      width: 95%;
+    }
+  }
+
+  &__box {
+    // box內文標題那一塊 ==========
+    &-details {
+      flex: 0.5;
+      // background-color: aquamarine;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem 1rem;
+      // align-items: center;
+      width: calc($box-maxWidth - 20rem);
+
+      @extend %rwd-width;
+
+      &--title {
+        display: flex;
+        align-items: center;
+
+        h1 {
+          color: var(--color-main1-dark);
+          font-size: 4.5rem;
+          letter-spacing: 0.5rem;
+          white-space: nowrap;
+
+          @include phone {
+            font-size: 3rem;
+            white-space: normal;
+          }
+        }
+
+        p {
+          color: var(--color-main1-dark);
+          letter-spacing: 0.2rem;
+          margin-left: 1rem;
+          font-size: 2rem;
+        }
+      }
+
+      &--small {
+        @include flex(space-between, flex-end, wrap);
+        gap: 1rem;
+
+        small,
+        a {
+          background-color: var(--color-main2-dark);
+          color: var(--color-white);
+          padding: 0.5rem 1rem;
+          border-radius: 2rem;
+          letter-spacing: 0.2rem;
+          font-size: 1.8rem;
+          text-decoration: none;
+          transition: all 0.1s ease-in-out;
+
+          mark {
+            background-color: inherit;
+            color: currentColor;
+          }
+        }
+
+        a {
+          background-color: #307bb7;
+          // display: none;
+        }
+        a:hover {
+          background-color: var(--color-main1);
+        }
+        span {
+          letter-spacing: 0.1rem;
+          font-size: 1.5rem;
+          display: flex;
+          color: var(--color-gray-dark);
+        }
+      }
+    }
+
+    // box內img
+    &-img {
+      flex: 1;
+      @include flex(center, center);
+
+      img {
+        // width: 100rem;
+        object-fit: cover;
+        max-width: calc($box-maxWidth - 20rem);
+        max-height: 60rem;
+        margin: 0 auto;
+        border-radius: 3rem;
+        border: 1rem solid var(--color-main1);
+
+        @extend %rwd-width;
+
+        @include phone {
+          border: 0.7rem solid var(--color-main1);
+        }
+      }
+
+      // 左右按鈕
+      .btn__prev,
+      .btn__next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--color-main1);
+        @include flex(center, center);
+        @include wh(6rem, 6rem);
+        border-radius: 50%;
+        background-color: rgba($color: #76cdff, $alpha: 0.5);
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          color: var(--color-main1-dark);
+          cursor: pointer;
+          background-color: rgba($color: #76cdff, $alpha: 0.8);
+        }
+
+        @include s-phone {
+          top: 30%;
+          opacity: 0.8;
+        }
+      }
+      .btn__prev {
+        left: 1.5rem;
+      }
+      .btn__next {
+        right: 1.5rem;
+      }
+    }
+  }
+}
+
+.btn__close {
+  @include flex(center, center);
+  @include wh(4rem, 4rem);
+  border-radius: 50%;
+  background-color: var(--color-main2);
+  color: var(--color-white);
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    color: var(--color-main1);
+    cursor: pointer;
+    background-color: var(--color-main2-dark);
+  }
+}

@@ -1,0 +1,67 @@
+// 基本設定 =============================================
+@mixin wh($w: auto, $h: auto) {
+  width: $w;
+  height: $h;
+}
+
+// flex設定 =============================================
+@mixin flex($j: flex-start, $a: flex-start, $wrap: nowrap) {
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center($wrap: nowrap) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: $wrap;
+}
+
+// animation =============================================
+@mixin animation($name, $time) {
+  animation-name: $name; /*動畫名稱，需與 keyframe 名稱對應*/
+  animation-duration: $time; /*動畫持續時間，單位為秒*/
+  animation-timing-function: ease-in-out; /*動畫播放速度曲線*/
+  animation-iteration-count: infinite; /*動畫次數，infinite 為無限次*/
+  animation-direction: alternate-reverse;
+}
+
+// 樣式設定 =============================================
+
+@mixin border($t, $r, $b, $l) {
+  border-top: $t;
+  border-right: $r;
+  border-bottom: $b;
+  border-left: $l;
+}
+
+// 設定media =============================================
+// 1250px
+@mixin desktop {
+  @media (max-width: $bp-large) {
+    @content;
+  }
+}
+
+// 980px
+@mixin pad {
+  @media (max-width: $bp-medium) {
+    @content;
+  }
+}
+
+// 780px
+@mixin phone {
+  @media (max-width: $bp-small) {
+    @content;
+  }
+}
+
+// 550px
+@mixin s_phone {
+  @media (max-width: $bp-smallest) {
+    @content;
+  }
+}

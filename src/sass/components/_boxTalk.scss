@@ -1,0 +1,128 @@
+.box {
+  position: relative;
+
+  //最下層底色
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -6rem;
+
+    // 三角形
+    width: 0;
+    height: 0;
+    border: 3rem solid;
+    border-width: 2rem 5rem 2rem 1rem;
+    border-color: transparent var(--color-main1) transparent transparent;
+    @include pad {
+      border-width: 4rem 5rem 4rem 4rem;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, 0rem) rotate(270deg);
+    }
+  }
+
+  // 覆蓋在上面的白色三角形
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -4rem;
+
+    width: 0;
+    height: 0;
+    border: 3rem solid;
+    border-width: 1.5rem 4rem 1.5rem 1rem;
+    border-color: transparent var(--color-white) transparent transparent;
+    @include pad {
+      border-width: 4rem 5rem 4rem 4rem;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -1.5rem) rotate(270deg);
+    }
+  }
+
+  &__reverse {
+    .box__talk {
+      --shadow-box-dark: -0.5rem 0.5rem 0px #d50000;
+
+      @include pad {
+        --shadow-box-dark: 0.5rem 0.5rem 0px #d50000;
+      }
+    }
+
+    &::before {
+      left: auto;
+      right: -6rem;
+      transform: rotate(180deg);
+    }
+
+    &::after {
+      left: auto;
+      right: -4rem;
+      transform: rotate(180deg);
+      top: 52%;
+    }
+
+    &::after,
+    &::before {
+      @include pad {
+        display: none;
+      }
+    }
+  }
+
+  &__talk {
+    // @include wh(50rem, 20rem);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-box-dark);
+    border-radius: 2rem;
+    border: 0.8rem var(--color-main1) solid;
+    line-height: 1.5;
+    flex: 1;
+    padding: 2rem 5rem;
+
+    @include phone {
+      padding: 2rem;
+    }
+
+    h1 {
+      line-height: 2;
+      letter-spacing: 0.5rem;
+      color: var(--color-main1-dark);
+      text-decoration-line: underline;
+
+      @include desktop {
+        br {
+          display: none;
+        }
+      }
+
+      @include pad {
+        br {
+          display: block;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: 0.1rem;
+      color: var(--color-main1-dark2);
+    }
+    p {
+      font-size: 1.5rem;
+      color: var(--color-gray-dark);
+    }
+
+    // about頁時rwd排序用
+    &--me {
+      @include pad {
+        order: -1;
+        margin-bottom: 4rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// 16px是預設,當我們想用百分比則是100%(16px)
+// 如果想呈現文字是10px,16px * ? = 10px >> 10 / 16 = 0.625 = 62.5%
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  //設定html下文字默認原本是16px改成10px
+  font-size: 62.5%;
+
+  @include desktop {
+    font-size: 58%;
+  }
+}
+
+body {
+  scroll-behavior: smooth;
+  font-family: 'Righteous', 'Noto Sans TC', cursive;
+  background: url('../src/img/bg.jpg') repeat;
+}
+
+img {
+  display: block;
+}
+
+// font size
+h1 {
+  font-size: 3rem;
+  @include phone {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+// 反白語法
+::selection {
+  color: var(--color-white);
+  background: var(--color-main2-dark);
+}
+
+// 卷軸語法
+::-webkit-scrollbar {
+  width: 2rem;
+  cursor: pointer;
+
+  &-button,
+  &-corner {
+    display: none;
+  }
+
+  // 卷軸
+  &-thumb {
+    padding-right: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--color-main2);
+    border: 0.5rem solid var(--color-white);
+
+    &:hover {
+      background-color: var(--color-main2-dark);
+    }
+  }
+
+  // 卷軸背景
+  &-track {
+    background-color: transparent;
+  }
+}
+
+// 錨點位置改變
+:target:before {
+  content: '';
+  display: block;
+  height: 10rem;
+}

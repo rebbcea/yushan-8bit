@@ -1,0 +1,29 @@
+// 樣式設定 =============================================
+
+%border-blue {
+  border: 1rem solid var(--color-main2);
+  box-shadow: 0.7rem 0.7rem 0px var(--color-main1);
+}
+
+%border-content {
+  border-radius: 2rem;
+  @extend %border-blue;
+  background: var(--color-white);
+}
+
+// 置中 ================================================
+
+%ab-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%ab-0000 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

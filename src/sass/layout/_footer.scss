@@ -1,0 +1,9 @@
+footer {
+  background-color: var(--color-main1);
+  height: 5rem;
+  width: 100%;
+  @include flex(center, center);
+  p {
+    color: var(--color-white);
+  }
+}

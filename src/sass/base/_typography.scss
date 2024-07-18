@@ -1,0 +1,129 @@
+// 其他共用標題 =======================================================
+.text {
+  &__mainTitle {
+    font-weight: 900 !important;
+    color: var(--color-main2);
+    // -webkit-text-stroke: 0.2rem var(--color-white);
+    text-shadow: 3px 4px 0 var(--color-main1);
+    font-weight: bold;
+  }
+}
+
+// index標題樣式設定 ==================================================
+
+$index-fontSize: 25rem;
+$index-fontSize--sub: 5rem;
+
+// 主標全體style
+%title-style {
+  font-family: 'Righteous', cursive;
+  font-weight: bold;
+  font-size: $index-fontSize;
+  text-align: center;
+  -webkit-text-stroke: 3rem var(--color-white);
+
+  @extend %fontSize-RWD;
+}
+
+%text-clip {
+  color: transparent; /* 文字顏色設定透明 */
+  background-image: linear-gradient(
+    45deg,
+    var(--color-white) 20%,
+    var(--color-main2) 20%,
+    var(--color-white) 60%,
+    var(--color-main2) 60%
+  ); /* 設定漸層角度及顏色 */
+  -webkit-background-clip: text; /* 背景裁剪成文字的前景色 */
+  background-clip: text;
+  background-size: 600%;
+}
+
+.text {
+  &__title {
+    font-size: $index-fontSize;
+    position: relative;
+
+    @extend %fontSize-RWD;
+
+    br {
+      display: none;
+
+      @include phone {
+        display: block;
+      }
+    }
+  }
+
+  // 第一層主顏色
+  &__title--1 {
+    @extend %title-style, %text-clip;
+    // @include animation(float, 2s);
+    animation: color-change 10s infinite, float 4s infinite;
+
+    // 其他繼承影響的項目 ===
+    // 讓所有層對齊運用絕對位置
+    position: absolute;
+    top: 0;
+    z-index: 4;
+    // color: var(--color-main2);
+    -webkit-text-stroke: 0.2rem var(--color-main2);
+  }
+
+  //  第二層白框
+  &__title--2 {
+    @extend .text__title--1;
+    z-index: 3;
+    -webkit-text-stroke: 2.5rem var(--color-white);
+  }
+
+  // 第三層最外框
+  &__title--3 {
+    @extend .text__title--1;
+    z-index: 2;
+    -webkit-text-stroke: 3.5rem var(--color-main1);
+  }
+
+  // 陰影
+  &__title--shadow {
+    @extend .text__title--1;
+    z-index: 1;
+    color: var(--color-main1);
+    -webkit-text-stroke: 3.5rem var(--color-main1);
+
+    animation-duration: 0s; /*動畫持續時間，單位為秒*/
+  }
+}
+
+%fontSize-RWD {
+  @include pad {
+    font-size: calc($index-fontSize - 5rem);
+  }
+  @include phone {
+    font-size: calc($index-fontSize - 8rem);
+  }
+  @include s_phone {
+    font-size: calc($index-fontSize - 15rem);
+  }
+}
+
+// 副標設定
+.text__title--sub,
+.text__subTitle.text__title--1,
+.text__subTitle.text__title--2,
+.text__subTitle.text__title--3 {
+  // transform: translate(-50%, 220%);
+  margin-top: 1rem;
+  font-family: 'Happy Monkey', 'Noto Serif TC', cursive;
+  font-size: $index-fontSize--sub;
+  letter-spacing: 1.5rem;
+
+  @include animation(float, 6s);
+  @include phone {
+    font-size: calc($index-fontSize--sub - 1rem);
+    margin-top: 2rem;
+  }
+  @include s_phone {
+    margin-top: 2.5rem;
+  }
+}

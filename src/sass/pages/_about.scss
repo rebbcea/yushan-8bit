@@ -1,0 +1,90 @@
+%section-center {
+  max-width: var(--max-width);
+  height: 100vh;
+  margin: var(--header-height) + auto 0;
+
+  @include flex-center(nowrap);
+  flex-direction: column;
+}
+
+.about {
+  // 測試 等等要重新加回來下面那行和刪除這行
+  // @extend %section-center;
+
+  // @extend %ab-center;
+
+  display: grid;
+  row-gap: 3rem;
+  column-gap: 8rem;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  @include pad {
+    @include flex(flex-start, center, wrap);
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  // 名字
+  &__name {
+    text-align: center;
+    font-size: 5rem;
+    letter-spacing: 1rem;
+  }
+
+  &__content {
+    grid-column: 1;
+  }
+
+  // 介紹表格
+  .table {
+    font-size: 1.5rem;
+    border-spacing: 1rem;
+
+    &__title {
+      text-align: center;
+      font-weight: bold;
+      background-color: var(--color-white);
+      color: var(--color-main1);
+      border: 0.1rem currentColor solid;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+    }
+
+    &__detail {
+      color: var(--color-main1-dark2);
+      padding-left: 1rem;
+    }
+  }
+
+  // 圖片
+  &__img {
+    @extend %border-blue;
+    @include flex(center, flex-end, nowrap);
+    border-radius: 5rem;
+    @include wh(25rem, 25rem);
+
+    @include desktop {
+      @include wh(20rem, 20rem);
+    }
+    @include pad {
+      @include wh(25rem, 25rem);
+    }
+
+    &--me {
+      // order: -1;
+      background: var(--color-white) url('../src/img/8bit_自畫像.png') no-repeat
+        center / cover;
+    }
+
+    &--mickey {
+      background: var(--color-white) url('../src/img/8bit_米奇.png') no-repeat
+        center / cover;
+
+      @include pad {
+        @include wh(20rem, 20rem);
+        border-radius: 50%;
+        margin-top: 3rem;
+      }
+    }
+  }
+}

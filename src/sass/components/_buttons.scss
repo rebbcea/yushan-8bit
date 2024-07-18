@@ -1,0 +1,40 @@
+.btn {
+  // 選擇按鈕 =====================================================
+  &__choose {
+    // 不換行是因為換行陰影會跑掉
+    white-space: nowrap;
+    position: relative;
+    z-index: 0;
+    color: var(--color-white);
+    font-weight: 900;
+    font-size: 3.5rem;
+    padding: 1rem 2rem;
+    letter-spacing: 1rem;
+    box-align: center;
+    border-radius: 5rem;
+    background: var(--color-white);
+    border: var(--border-solid);
+    box-shadow: 0.5rem 0.5rem 0px var(--color-main2);
+    @include phone {
+      color: var(--color-main1);
+    }
+    @include s-phone {
+      font-size: 2.5rem;
+      padding: 1rem 1.5rem;
+    }
+
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      -webkit-text-stroke: 0.6rem var(--color-main1);
+      z-index: -1;
+      @include phone {
+        display: none;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

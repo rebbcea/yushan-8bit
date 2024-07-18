@@ -1,0 +1,197 @@
+// common設定
+
+.none {
+  display: none;
+}
+
+/* 寬高系列 ================================================*/
+.w-100 {
+  width: 100%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+// 扣除選單的高度
+.h-100 {
+  height: calc(100% - var(--header-height));
+}
+
+/* flex系列 ============================================*/
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.ju-center {
+  justify-content: center;
+}
+.ju-start {
+  justify-content: flex-start;
+}
+.ju-end {
+  justify-content: flex-end;
+}
+
+.al-center {
+  align-items: center;
+}
+.al-start {
+  align-items: flex-start;
+}
+.al-end {
+  align-items: flex-end;
+}
+
+/* margin系列 =====================================*/
+
+.mx-auto {
+  margin: 0 auto;
+}
+
+/*margin-left*/
+.ml-0 {
+  margin-left: 0;
+}
+.ml-s {
+  margin-left: 1rem;
+}
+.ml-m {
+  margin-left: 3rem;
+}
+.ml-l {
+  margin-left: 5rem;
+}
+.ml-auto {
+  margin-left: auto;
+}
+
+/*margin-right*/
+.mr-0 {
+  margin-right: 0;
+}
+.mr-s {
+  margin-right: 1rem;
+}
+.mr-m {
+  margin-right: 3rem;
+}
+.mr-l {
+  margin-right: 5rem;
+}
+.mr-auto {
+  margin-right: auto;
+}
+
+/*margin-top*/
+.mt-0 {
+  margin-top: 0;
+}
+.mt-s {
+  margin-top: 1rem;
+}
+.mt-m {
+  margin-top: 3rem;
+}
+.mt-l {
+  margin-top: 5rem;
+}
+.mt-xl {
+  margin-top: 8rem;
+}
+
+@include phone {
+  .mt-l {
+    margin-top: 1rem;
+  }
+}
+
+/*margin-bottom*/
+.mb-0 {
+  margin-bottom: 0;
+}
+.mb-s {
+  margin-bottom: 1rem;
+}
+.mb-m {
+  margin-bottom: 3rem;
+}
+.mb-l {
+  margin-bottom: 5rem;
+}
+
+/* padding系列 ===================================*/
+
+/*padding-left*/
+.pl-0 {
+  padding-left: 0;
+}
+.pl-s {
+  padding-left: 1rem;
+}
+.pl-m {
+  padding-left: 3rem;
+}
+.pl-l {
+  padding-left: 5rem;
+}
+.pl-auto {
+  padding-left: auto;
+}
+
+/*padding-right*/
+.pr-0 {
+  padding-right: 0;
+}
+.pr-s {
+  padding-right: 1rem;
+}
+.pr-m {
+  padding-right: 3rem;
+}
+.pr-l {
+  padding-right: 5rem;
+}
+.pr-auto {
+  padding-right: auto;
+}
+
+/*padding-top*/
+.pt-0 {
+  padding-top: 0;
+}
+.pt-s {
+  padding-top: 1rem;
+}
+.pt-m {
+  padding-top: 3rem;
+}
+.pt-l {
+  padding-top: 5rem;
+}
+.pt-xl {
+  padding-top: 8rem;
+}
+
+/*padding-bottom*/
+.pb-0 {
+  margin-bottom: 0;
+}
+.pb-s {
+  margin-bottom: 1rem;
+}
+.pb-m {
+  margin-bottom: 3rem;
+}
+.pb-l {
+  margin-bottom: 5rem;
+}
