@@ -724,7 +724,7 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 125rem;
-  max-height: 90vh;
+  max-height: 95vh;
   background-color: var(--color-light);
   border: 1rem solid var(--color-main2);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
