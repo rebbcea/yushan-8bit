@@ -314,6 +314,10 @@ $box-maxWidth: 125rem;
 
         @extend %rwd-width;
 
+        @media (max-width: 1400px) {
+          max-height: 40rem;
+        }
+
         @include phone {
           border: 0.7rem solid var(--color-main1);
         }
