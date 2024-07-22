@@ -838,7 +838,7 @@ p {
   border-radius: 3rem;
   border: 1rem solid var(--color-main1);
 }
-@media (max-width: 1400px) {
+@media (max-width: 1440px) {
   .portfolio__box-img img {
     max-height: 40rem;
   }
